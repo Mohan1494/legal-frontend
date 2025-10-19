@@ -2,7 +2,8 @@ import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 // Backend base URL
-const API_URL = process.env.REACT_APP_API_BASE || "http://localhost:5000/api";
+const API_URL = "https://legal-backend-rgbj.onrender.com/api";
+// || "http://localhost:5000/api";
 
 // ✅ Corrected endpoints
 export const fetchCases = createAsyncThunk("cases/fetchAll", async () => {
