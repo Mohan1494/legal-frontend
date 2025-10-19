@@ -4,37 +4,33 @@ import axios from "axios";
 // Backend base URL
 const API_URL = process.env.REACT_APP_API_BASE || "http://localhost:5000/api";
 
-axios.get(`${API_URL}/api/cases`);
-
-// 🟢 Fetch all cases
+// ✅ Corrected endpoints
 export const fetchCases = createAsyncThunk("cases/fetchAll", async () => {
-  const res = await axios.get(API_URL);
+  const res = await axios.get(`${API_URL}/cases`);
   return res.data;
 });
 
-// 🟢 Fetch single case by ID
 export const fetchCaseById = createAsyncThunk("cases/fetchById", async (id) => {
-  const res = await axios.get(`${API_URL}/${id}`);
+  const res = await axios.get(`${API_URL}/cases/${id}`);
   return res.data;
 });
 
-// 🟢 Add new case
 export const addCase = createAsyncThunk("cases/add", async (newCase) => {
-  const res = await axios.post(API_URL, newCase);
+  const res = await axios.post(`${API_URL}/cases`, newCase);
   return res.data;
 });
 
-// 🟢 Update existing case
 export const updateCase = createAsyncThunk("cases/update", async ({ id, updated }) => {
-  const res = await axios.put(`${API_URL}/${id}`, updated);
+  const res = await axios.put(`${API_URL}/cases/${id}`, updated);
   return res.data;
 });
 
-// 🟢 Delete case
 export const deleteCase = createAsyncThunk("cases/delete", async (id) => {
-  await axios.delete(`${API_URL}/${id}`);
+  await axios.delete(`${API_URL}/cases/${id}`);
   return id;
 });
+
+
 
 const caseSlice = createSlice({
   name: "cases",
